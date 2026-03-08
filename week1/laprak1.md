@@ -51,13 +51,13 @@ Berikut adalah langkah-langkah yang dilakukan selama praktikum Modul 1:
 ### 3.1 Tampilan Awal Wireshark
 Berikut adalah tampilan awal Wireshark sebelum membuka file trace. Terlihat daftar interface jaringan yang tersedia.
 
-![Tampilan Awal Wireshark]()
+![Tampilan Awal Wireshark](../assets/images/week1.1.png)
 *Gambar 1: Gambar Tersebut Merupakan Tampilan awal Wireshark saat pertama kali dibuka.*
 
 ### 3.2 Verifikasi Python
 Berikut adalah tangkapan layar Command Prompt/Terminal saat mengecek versi Python untuk memastikan tools siap digunakan pada modul selanjutnya (Modul 7 & 9).
 
-![Cek Python]()
+![Cek Python](../assets/images/python.png)
 *Gambar 2: Verifikasi instalasi Python melalui command line.*
 
 ---

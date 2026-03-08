@@ -86,7 +86,7 @@ Wireshark merupakan salah satu aplikasi yang menerapkan konsep **Packet Sniffer*
 
 ## 5. KESIMPULAN
 
-| No | Poin Kesimpulan | Penjelasan |1
+| No | Poin Kesimpulan | Penjelasan |
 |----|----------------|------------|
 | 1 | Instalasi Wireshark | Wireshark berhasil diinstal dan berjalan stabil pada sistem operasi yang digunakan |
 | 2 | Fungsi Packet Sniffer | Wireshark mampu menangkap paket secara pasif tanpa mengganggu lalu lintas jaringan |
