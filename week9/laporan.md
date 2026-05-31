@@ -2,9 +2,12 @@
 ## Web Server Programming dengan Python Socket
 
 ### Identitas Praktikan
-**Nama    :** [RESTU FADILAH AL FATAH]
-**NIM     :** [103072400081 ]
-**Kelas   :** [IF-04-01 ]
+
+| Item | Keterangan |
+|------|------------|
+| **Nama** | RESTU FADILAH AL FATAH|
+| **NIM** | 103072400081 |
+| **Kelas** | IF-04-01 |
 
 ---
 
@@ -113,7 +116,7 @@ sys.exit() #Terminate the program after sending the corresponding data
 [Not Found](../week9/assets/NotFound.png)
 
 
-## 9.7 Kesimpulan
+## 9.5 Kesimpulan
 
 Berdasarkan praktikum yang telah dilakukan:
 
