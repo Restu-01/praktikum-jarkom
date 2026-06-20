@@ -17,12 +17,13 @@
 
 ## 1. Tujuan Praktikum
 
-| No | Tujuan                                            | Penjelasan                                                                                                       |
-| -- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 1  | Mengembangkan aplikasi client-server berbasis UDP | Memahami cara kerja komunikasi menggunakan socket UDP yang tidak memerlukan proses pembentukan koneksi.          |
-| 2  | Mengembangkan aplikasi client-server berbasis TCP | Mempelajari implementasi socket TCP yang menggunakan mekanisme koneksi untuk pertukaran data.                    |
-| 3  | Mempelajari perbedaan antara UDP dan TCP          | Memahami karakteristik, kelebihan, kekurangan, serta penggunaan yang sesuai untuk masing-masing protokol.        |
-| 4  | Menganalisis proses komunikasi data               | Mengamati dan memahami alur pertukaran data yang terjadi antara client dan server selama komunikasi berlangsung. |
+| No | Tujuan                                           | Penjelasan                                                                                                          |
+| -- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| 1  | Merancang aplikasi client-server menggunakan UDP | Memahami implementasi komunikasi jaringan berbasis UDP yang bekerja tanpa perlu membangun koneksi terlebih dahulu.  |
+| 2  | Merancang aplikasi client-server menggunakan TCP | Mempelajari cara kerja komunikasi TCP yang mengharuskan adanya pembentukan koneksi antara client dan server.        |
+| 3  | Membandingkan karakteristik UDP dan TCP          | Mengetahui perbedaan fitur, keunggulan, kelemahan, serta penerapan kedua protokol pada berbagai kebutuhan jaringan. |
+| 4  | Mengkaji proses pertukaran data pada jaringan    | Mengamati aliran data dan mekanisme komunikasi yang terjadi antara client dan server selama proses berlangsung.     |
+
 
 
 ---
@@ -31,29 +32,31 @@
 
 ### 2.1 Konsep Socket Programming
 
-| Istilah     | Definisi                                                                                                    |
-| ----------- | ----------------------------------------------------------------------------------------------------------- |
-| **Socket**  | Antarmuka komunikasi yang digunakan oleh aplikasi untuk bertukar data melalui jaringan.                     |
-| **Client**  | Program yang mengirimkan permintaan atau memulai komunikasi dengan server.                                  |
-| **Server**  | Program yang menunggu, menerima, dan memproses permintaan dari client.                                      |
-| **Binding** | Proses menghubungkan socket dengan alamat IP dan nomor port tertentu agar dapat digunakan untuk komunikasi. |
-| **Listen**  | Kondisi ketika server berada dalam keadaan siap untuk menerima permintaan koneksi dari client.              |
-| **Accept**  | Proses server menerima koneksi yang masuk dan membuat socket baru untuk melayani client tersebut.           |
-| **Connect** | Langkah yang dilakukan client untuk membangun koneksi dengan server sebelum pertukaran data berlangsung.    |
+| Istilah     | Definisi                                                                                                               |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Socket**  | Mekanisme atau titik akhir komunikasi yang memungkinkan dua aplikasi saling bertukar data melalui jaringan.            |
+| **Client**  | Aplikasi yang berperan sebagai pengirim permintaan dan memulai proses komunikasi dengan server.                        |
+| **Server**  | Aplikasi yang bertugas menunggu koneksi, menerima permintaan, serta memberikan layanan kepada client.                  |
+| **Binding** | Proses mengaitkan socket dengan alamat IP dan port tertentu agar dapat digunakan dalam komunikasi jaringan.            |
+| **Listen**  | Keadaan ketika server aktif menunggu permintaan koneksi yang datang dari client.                                       |
+| **Accept**  | Tahapan di mana server menerima koneksi yang masuk dan membuat socket khusus untuk menangani komunikasi dengan client. |
+| **Connect** | Proses yang dilakukan client untuk menjalin koneksi dengan server sebelum melakukan pertukaran data.                   |
+
 
 
 ### 2.2 Perbandingan UDP dan TCP
 
-| Karakteristik            | UDP                                         | TCP                                                                          |
-| ------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------- |
-| **Tipe Protokol**        | Bersifat *connectionless*                   | Bersifat *connection-oriented*                                               |
-| **Proses Koneksi**       | Tidak memerlukan proses handshake           | Menggunakan *3-way handshake* (SYN, SYN-ACK, ACK) sebelum komunikasi dimulai |
-| **Keandalan Pengiriman** | Tidak menjamin paket sampai ke tujuan       | Menjamin pengiriman data melalui ACK dan retransmisi                         |
-| **Urutan Data**          | Paket dapat diterima tidak berurutan        | Data diterima sesuai urutan pengiriman                                       |
-| **Ukuran Header**        | Relatif kecil, yaitu 8 byte                 | Lebih besar, minimal 20 byte                                                 |
-| **Performa Kecepatan**   | Lebih cepat karena minim overhead           | Sedikit lebih lambat akibat proses kontrol dan handshake                     |
-| **Flow Control**         | Tidak menyediakan mekanisme flow control    | Memiliki flow control melalui mekanisme windowing                            |
-| **Contoh Penggunaan**    | DNS, streaming video, VoIP, dan game online | Web browsing, email, serta transfer file                                     |
+| Karakteristik           | UDP                                                     | TCP                                                          |
+| ----------------------- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| **Jenis Komunikasi**    | Tidak memerlukan koneksi (*connectionless*)             | Memerlukan koneksi terlebih dahulu (*connection-oriented*)   |
+| **Pembentukan Koneksi** | Data dapat langsung dikirim tanpa handshake             | Harus melalui proses *3-way handshake* sebelum bertukar data |
+| **Keandalan**           | Tidak menjamin data terkirim atau diterima dengan benar | Menjamin keandalan pengiriman melalui ACK dan retransmisi    |
+| **Pengurutan Data**     | Paket dapat tiba dalam urutan yang berbeda              | Data diterima sesuai urutan pengirimannya                    |
+| **Ukuran Header**       | Lebih kecil, hanya 8 byte                               | Lebih besar, minimal 20 byte                                 |
+| **Kecepatan Transfer**  | Lebih cepat karena overhead yang rendah                 | Relatif lebih lambat akibat mekanisme kontrol tambahan       |
+| **Kontrol Aliran Data** | Tidak memiliki fitur flow control                       | Menyediakan flow control dengan mekanisme window             |
+| **Bidang Penggunaan**   | Cocok untuk DNS, VoIP, streaming, dan game online       | Umum digunakan pada web, email, dan transfer file            |
+                     |
 
 
 ---
@@ -225,13 +228,14 @@ Client terhubung ke server, mengirim pesan, dan menerima response.
 
 ### 7.4.1 Perbedaan Implementasi
 
-| Aspek | UDP | TCP |
-|-------|-----|-----|
-| **Socket Type** | `SOCK_DGRAM` | `SOCK_STREAM` |
-| **Koneksi** | Tidak perlu `connect()` | Perlu `connect()` |
-| **Server Socket** | 1 socket untuk semua client | 2 socket (serverSocket + connectionSocket) |
-| **Send/Receive** | `sendto()` / `recvfrom()` | `send()` / `recv()` |
-| **Address** | Harus specify alamat | Otomatis (sudah ada koneksi) |
+| Aspek                              | UDP                                                                  | TCP                                                                                                |
+| ---------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Tipe Socket**                    | Menggunakan `SOCK_DGRAM`                                             | Menggunakan `SOCK_STREAM`                                                                          |
+| **Mekanisme Koneksi**              | Tidak memerlukan fungsi `connect()` karena bersifat connectionless   | Memerlukan fungsi `connect()` untuk membangun koneksi dengan server                                |
+| **Socket pada Server**             | Satu socket dapat melayani seluruh client                            | Menggunakan socket utama untuk menerima koneksi dan socket baru untuk setiap client yang terhubung |
+| **Pengiriman dan Penerimaan Data** | Menggunakan fungsi `sendto()` dan `recvfrom()`                       | Menggunakan fungsi `send()` dan `recv()`                                                           |
+| **Pengelolaan Alamat**             | Alamat tujuan atau pengirim harus dicantumkan pada setiap komunikasi | Alamat tidak perlu ditentukan lagi setelah koneksi berhasil dibuat                                 |
+
 
 ---
 
